@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ProductService {
     void saveProduct(Product product);
+
+    Product findByPnameAndStore(String pname, String store);
 }

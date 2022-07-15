@@ -14,4 +14,9 @@ public class ProductServiceImp implements ProductService {
     public void saveProduct(Product product) {
         productDao.save(product);
     }
+
+    @Override
+    public Product findByPnameAndStore(String pname, String store) {
+        return productDao.findByPnameAndStore(pname, store);
+    }
 }
