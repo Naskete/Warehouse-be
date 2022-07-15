@@ -6,6 +6,7 @@ import com.naskete.manage.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -16,5 +17,15 @@ public class DeliveryServiceImp implements DeliveryService {
     @Override
     public List<Delivery> findAll() {
         return deliveryDao.findAll();
+    }
+
+    @Override
+    public List<Delivery> findAfterTime(String time) {
+        return deliveryDao.findAfterTime(time);
+    }
+
+    @Override
+    public List<Delivery> findBetwinTime(String start, String end) {
+        return null;
     }
 }

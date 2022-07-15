@@ -17,6 +17,7 @@ public class StockController {
     @Autowired
     private ProductService productService;
 
+    // 登记入库 TODO 待定
     @PostMapping("/prod/register")
     public ResultJson register(@RequestParam("pname") String pname,
                                @RequestParam("punit") String punit,
@@ -30,6 +31,7 @@ public class StockController {
         product.setStore(store);
         product.setType(type);
         product.setPrice(price);
+        product.setIntime(new Date());
         product.setNum(num);
         productService.saveProduct(product);
         return new ResultJson(200, "物料登记成功");
@@ -59,6 +61,10 @@ public class StockController {
                                     @RequestParam("num") Integer num,
                                     @RequestParam("price") Double price,
                                     @RequestParam("username") String username) {
+        Product product = productService.findByPnameAndStore(pname, store);
+        if (product.getNum() < num) {
+            return new ResultJson(400, "库存不足");
+        }
         Delivery delivery = new Delivery();
         delivery.setPname(pname);
         delivery.setStore(store);

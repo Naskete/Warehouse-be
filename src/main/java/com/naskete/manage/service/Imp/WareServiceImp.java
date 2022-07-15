@@ -16,4 +16,14 @@ public class WareServiceImp implements WareService {
     public List<Ware> findAll() {
         return wareDao.findAll();
     }
+
+    @Override
+    public List<Ware> findAfterTime(String time) {
+        return null;
+    }
+
+    @Override
+    public List<Ware> findBetwinTime(String start, String end) {
+        return null;
+    }
 }
