@@ -23,7 +23,7 @@ public class Controller {
                             @RequestParam("password") String password) {
         User user = userService.FindByUsername(username);
         if (user == null) {
-            return new ResultJson(400, "the user is not exist, please register");
+            return new ResultJson(400, "user does not exist");
         }
         if (Sha256.check(password, user.getPassword())) {
             StpUtil.login(user.getUid());
@@ -43,15 +43,20 @@ public class Controller {
     public ResultJson register(@RequestParam("username") String username,
                                @RequestParam("password") String password,
                                @RequestParam("telephone") String telephone) {
+        User usr = userService.FindByUsername(username);
+        if (usr != null && usr.getTelephone().equals(telephone)) {
+            return new ResultJson(400, "user already exists");
+        }
         String pwd = Sha256.encode(password);
         User user = new User();
         user.setUsername(username);
         user.setPassword(pwd);
         user.setTelephone(telephone);
         userService.saveUser(user);
-        return new ResultJson(200, "register successfully");
+        return new ResultJson(200, "signed in");
     }
 
+    // TODO database backups
     public ResultJson backups() {
         return new ResultJson(200, null);
     }
