@@ -25,10 +25,13 @@ public class Controller {
         if (user == null) {
             return new ResultJson(400, "user does not exist");
         }
+        if (StpUtil.isLogin()) {
+            return new ResultJson(200, "you have already login", StpUtil.getTokenInfo().tokenValue);
+        }
         if (Sha256.check(password, user.getPassword())) {
             StpUtil.login(user.getUid());
             String token = StpUtil.getTokenInfo().tokenValue;
-            return new ResultJson(200, "登录成功", token);
+            return new ResultJson(200, "sign in", token);
         }
         return new ResultJson(400, "wrong username or password");
     }
@@ -36,7 +39,7 @@ public class Controller {
     @GetMapping("/logout")
     public ResultJson logout(){
         StpUtil.logout();
-        return new ResultJson(200, "logout");
+        return new ResultJson(200, "sign out");
     }
 
     @PostMapping("/register")
