@@ -9,7 +9,6 @@ import java.util.Date;
 @Entity
 public class Ware { // 入库单
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String pname;
     private String store;

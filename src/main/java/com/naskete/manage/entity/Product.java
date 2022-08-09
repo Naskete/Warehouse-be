@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity
 public class Product { // 物资表
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pid; // 编号
     private String pname; // 名称
     private String punit; // 货物单位
