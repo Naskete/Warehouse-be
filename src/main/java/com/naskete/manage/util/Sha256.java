@@ -1,8 +1,6 @@
 package com.naskete.manage.util;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.security.CryptoPrimitive;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
