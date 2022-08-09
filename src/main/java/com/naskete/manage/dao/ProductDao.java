@@ -2,8 +2,11 @@ package com.naskete.manage.dao;
 
 import com.naskete.manage.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
@@ -12,5 +15,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
     Product findByPnameAndStore(String pname, String store);
 
     @Query(value = "UPDATE product SET num = num + ?3 WHERE pname = ?1 AND store = ?2", nativeQuery = true)
+    @Modifying
+    @Transactional
     void updateNum(String pname, String store, Integer num);
 }
