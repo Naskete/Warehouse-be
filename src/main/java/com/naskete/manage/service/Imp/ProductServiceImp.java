@@ -19,4 +19,9 @@ public class ProductServiceImp implements ProductService {
     public Product findByPnameAndStore(String pname, String store) {
         return productDao.findByPnameAndStore(pname, store);
     }
+
+    @Override
+    public void updateNum(String pname, String store, Integer num) {
+        productDao.updateNum(pname, store, num);
+    }
 }

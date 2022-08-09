@@ -25,7 +25,12 @@ public class DeliveryServiceImp implements DeliveryService {
     }
 
     @Override
-    public List<Delivery> findBetwinTime(String start, String end) {
+    public List<Delivery> findBetweenTime(String start, String end) {
         return null;
+    }
+
+    @Override
+    public void saveDelivery(Delivery delivery) {
+        deliveryDao.save(delivery);
     }
 }

@@ -11,5 +11,7 @@ public interface WareService {
 
     List<Ware> findAfterTime(String time);
 
-    List<Ware> findBetwinTime(String start, String end);
+    List<Ware> findBetweenTime(String start, String end);
+
+    void saveWare(Ware ware);
 }

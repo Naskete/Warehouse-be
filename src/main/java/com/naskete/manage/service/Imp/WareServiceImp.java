@@ -23,7 +23,12 @@ public class WareServiceImp implements WareService {
     }
 
     @Override
-    public List<Ware> findBetwinTime(String start, String end) {
+    public List<Ware> findBetweenTime(String start, String end) {
         return null;
+    }
+
+    @Override
+    public void saveWare(Ware ware) {
+        wareDao.save(ware);
     }
 }
