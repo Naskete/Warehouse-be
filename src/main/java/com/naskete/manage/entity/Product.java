@@ -20,7 +20,7 @@ public class Product { // 物资表
     private Double price; // 入库单价
     @CreatedDate
     private Date intime; // 入库时间
-    private Double num; // 库存数量
+    private Integer num; // 库存数量
 
     public Integer getPid() {
         return pid;
@@ -78,11 +78,11 @@ public class Product { // 物资表
         this.intime = intime;
     }
 
-    public Double getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(Double num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 }
