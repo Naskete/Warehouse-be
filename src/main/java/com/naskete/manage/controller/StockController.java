@@ -53,8 +53,8 @@ public class StockController {
         return new ResultJson(200, "物料登记成功");
     }
 
-    @PostMapping("/prod/wave")
-    public ResultJson waveStore(@RequestParam("id") Integer id,
+    @PostMapping("/prod/ware")
+    public ResultJson wareStore(@RequestParam("id") Integer id,
                                 @RequestParam("pname") String pname,
                                 @RequestParam("store") String store,
                                 @RequestParam("num") Integer num,
