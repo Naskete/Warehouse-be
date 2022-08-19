@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
@@ -18,4 +19,10 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
     @Modifying
     @Transactional
     void updateNum(String pname, String store, Integer num);
+
+    @Query(value = "SELECT * FROM product WHERE store = ?1", nativeQuery = true)
+    List<Product> findByStore(String store);
+
+    @Query(value = "SELECT * FROM product WHERE pname = ?1", nativeQuery = true)
+    Product findByName(String name);
 }
