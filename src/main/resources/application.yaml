@@ -12,5 +12,10 @@ spring:
         hbm2ddl:
           auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
 sa-token:
   jwt-secret-key: saTokenJwtSecretKeyForThisProject
