@@ -31,4 +31,9 @@ public class WareServiceImp implements WareService {
     public void saveWare(Ware ware) {
         wareDao.save(ware);
     }
+
+    @Override
+    public void deleteWare(Integer id) {
+        wareDao.deleteById(id);
+    }
 }

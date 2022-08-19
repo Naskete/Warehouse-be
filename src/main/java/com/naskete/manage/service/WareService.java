@@ -14,4 +14,6 @@ public interface WareService {
     List<Ware> findBetweenTime(String start, String end);
 
     void saveWare(Ware ware);
+
+    void deleteWare(Integer id);
 }

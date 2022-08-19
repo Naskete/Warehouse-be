@@ -14,4 +14,6 @@ public interface DeliveryService {
     List<Delivery> findBetweenTime(String start, String end);
 
     void saveDelivery(Delivery delivery);
+
+    void deleteDelivery(Integer id);
 }

@@ -26,11 +26,16 @@ public class DeliveryServiceImp implements DeliveryService {
 
     @Override
     public List<Delivery> findBetweenTime(String start, String end) {
-        return null;
+        return deliveryDao.findBetweenTime(start, end);
     }
 
     @Override
     public void saveDelivery(Delivery delivery) {
         deliveryDao.save(delivery);
+    }
+
+    @Override
+    public void deleteDelivery(Integer id) {
+        deliveryDao.deleteById(id);
     }
 }
