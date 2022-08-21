@@ -2,6 +2,7 @@ package com.naskete.manage.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.naskete.manage.entity.User;
+import com.naskete.manage.service.BackupService;
 import com.naskete.manage.service.UserService;
 import com.naskete.manage.util.ResultJson;
 import com.naskete.manage.util.Sha256;
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class Controller {
     @Autowired
-    UserService userService;
+    private UserService userService;
+
+    @Autowired
+    private BackupService backupService;
 
     @PostMapping("/login")
     public ResultJson login(@RequestParam("username") String username,
@@ -48,7 +52,7 @@ public class Controller {
                                @RequestParam("telephone") String telephone) {
         User usr = userService.FindByUsername(username);
         if (usr != null && usr.getTelephone().equals(telephone)) {
-            return new ResultJson(400, "user already exists");
+            return new ResultJson(302, "user already exists");
         }
         String pwd = Sha256.encode(password);
         User user = new User();
@@ -59,8 +63,10 @@ public class Controller {
         return new ResultJson(200, "signed in");
     }
 
-    // TODO database backups
     public ResultJson backups() {
-        return new ResultJson(200, null);
+        if (backupService.backup()) {
+            return new ResultJson(200, "backup database successfully");
+        }
+        return new ResultJson(400, "backup database failed");
     }
 }
