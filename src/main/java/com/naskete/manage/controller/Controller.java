@@ -8,10 +8,7 @@ import com.naskete.manage.util.ResultJson;
 import com.naskete.manage.util.Sha256;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -63,10 +60,23 @@ public class Controller {
         return new ResultJson(200, "signed in");
     }
 
+    @GetMapping("/backup")
     public ResultJson backups() {
         if (backupService.backup()) {
             return new ResultJson(200, "backup database successfully");
         }
         return new ResultJson(400, "backup database failed");
+    }
+
+    @PostMapping("/usr/delete")
+    public ResultJson deleteUser(@RequestParam("id") Integer id) {
+        userService.deleteUser(id);
+        return new ResultJson(200, "delete successfully");
+    }
+
+    @PostMapping("/usr/update")
+    public ResultJson updateUser(@RequestBody User user) {
+        userService.updateUser(user);
+        return new ResultJson(200, "update successfully");
     }
 }
