@@ -1,21 +1,19 @@
 package com.naskete.manage.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 public class Ware { // 入库单
     @Id
-    private Integer id;
-    private String pname;
-    private String store;
-    private Date ptime;
-    private Integer num;
-    private Double price;
-    private String username;
+    private Integer id; // id
+    private String pname; // 名称
+    private String store; // 仓库
+    private Date ptime; // 时间
+    private Integer num; // 数量
+    private Double price; // 价格
+    private String username; // 负责人
 
     public Integer getId() {
         return id;

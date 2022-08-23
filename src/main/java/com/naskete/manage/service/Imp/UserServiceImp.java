@@ -6,6 +6,8 @@ import com.naskete.manage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class UserServiceImp implements UserService {
     @Autowired
@@ -28,5 +30,10 @@ public class UserServiceImp implements UserService {
     @Override
     public void updateUser(User user) {
         userDao.save(user);
+    }
+
+    @Override
+    public Optional<User> FindById(Integer id) {
+        return userDao.findById(id);
     }
 }
