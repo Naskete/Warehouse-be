@@ -19,12 +19,12 @@ public class WareServiceImp implements WareService {
 
     @Override
     public List<Ware> findAfterTime(String time) {
-        return null;
+        return wareDao.findAfterTime(time);
     }
 
     @Override
     public List<Ware> findBetweenTime(String start, String end) {
-        return null;
+        return wareDao.findBetweenTime(start, end);
     }
 
     @Override
