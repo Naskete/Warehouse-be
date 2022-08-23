@@ -1,12 +1,15 @@
 package com.naskete.manage.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 public class Ware { // 入库单
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; // id
     private String pname; // 名称
     private String store; // 仓库

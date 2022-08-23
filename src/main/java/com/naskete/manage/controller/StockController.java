@@ -31,7 +31,8 @@ public class StockController {
 
     // 物料登记
     @PostMapping("/prod/register")
-    public ResultJson register(@RequestParam("pid") Integer pid,
+    public ResultJson register(
+//            @RequestParam("pid") Integer pid,
                                @RequestParam("pname") String pname,
                                @RequestParam("punit") String punit,
                                @RequestParam("store") String store,
@@ -40,7 +41,7 @@ public class StockController {
                                @RequestParam("num") Integer num) {
         // 第一次登记,直接保存
         Product product = new Product();
-        product.setPid(pid);
+//        product.setPid(pid);
         product.setPname(pname);
         product.setPunit(punit);
         product.setStore(store);
@@ -54,7 +55,8 @@ public class StockController {
     }
 
     @PostMapping("/prod/ware")
-    public ResultJson wareStore(@RequestParam("id") Integer id,
+    public ResultJson wareStore(
+//            @RequestParam("id") Integer id,
                                 @RequestParam("pname") String pname,
                                 @RequestParam("store") String store,
                                 @RequestParam("num") Integer num,
@@ -63,7 +65,7 @@ public class StockController {
         // 入库
         // 入库单内容
         Ware ware = new Ware();
-        ware.setId(id);
+//        ware.setId(id);
         ware.setPname(pname);
         ware.setStore(store);
         ware.setPtime(new Date());
@@ -79,7 +81,8 @@ public class StockController {
     }
 
     @PostMapping("/prod/delivery")
-    public ResultJson deliveryStore(@RequestParam("id") Integer id,
+    public ResultJson deliveryStore(
+//            @RequestParam("id") Integer id,
                                     @RequestParam("pname") String pname,
                                     @RequestParam("store") String store,
                                     @RequestParam("num") Integer num,
@@ -101,7 +104,7 @@ public class StockController {
 
         // 出库单
         Delivery delivery = new Delivery();
-        delivery.setId(id);
+//        delivery.setId(id);
         delivery.setPname(pname);
         delivery.setStore(store);
         delivery.setPtime(new Date());
