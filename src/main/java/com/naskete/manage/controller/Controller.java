@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @Slf4j
 public class Controller {
@@ -70,13 +72,27 @@ public class Controller {
 
     @PostMapping("/usr/delete")
     public ResultJson deleteUser(@RequestParam("id") Integer id) {
+        Optional<User> optional = userService.FindById(id);
+        User user = null;
+        if (optional.isPresent()) {
+            user = optional.get();
+        }
+        if (user == null) {
+            return new ResultJson(400, "user is not exists");
+        }
         userService.deleteUser(id);
         return new ResultJson(200, "delete successfully");
     }
 
     @PostMapping("/usr/update")
     public ResultJson updateUser(@RequestBody User user) {
-        userService.updateUser(user);
+        String pwd = user.getPassword();
+        User usr = new User();
+        usr.setUid(user.getUid());
+        usr.setUsername(user.getUsername());
+        usr.setPassword(Sha256.encode(pwd));
+        usr.setTelephone(user.getTelephone());
+        userService.updateUser(usr);
         return new ResultJson(200, "update successfully");
     }
 }
