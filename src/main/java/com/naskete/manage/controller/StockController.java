@@ -35,7 +35,7 @@ public class StockController {
                                @RequestParam("pname") String pname,
                                @RequestParam("punit") String punit,
                                @RequestParam("store") String store,
-                               @RequestParam("type") Integer type,
+                               @RequestParam("type") String type,
                                @RequestParam("price") Double price,
                                @RequestParam("num") Integer num) {
         // 第一次登记,直接保存
@@ -113,7 +113,6 @@ public class StockController {
         // 更新库存
         productService.updateNum(pname, store, num * (-1));
         redisTemplate.opsForValue().set(pname, (Integer) redisTemplate.opsForValue().get(pname) - num);
-        System.out.println(redisTemplate.opsForValue().get(pname));
         return new ResultJson(200, "提交成功");
     }
 }
