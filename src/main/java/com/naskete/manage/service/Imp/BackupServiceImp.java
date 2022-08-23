@@ -3,6 +3,7 @@ package com.naskete.manage.service.Imp;
 import com.naskete.manage.dao.BackupDao;
 import com.naskete.manage.entity.Backup;
 import com.naskete.manage.service.BackupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 @Component
 public class BackupServiceImp implements BackupService {
+    @Autowired
     private BackupDao backupDao;
     @Override
     public boolean backup() {
@@ -46,7 +48,7 @@ public class BackupServiceImp implements BackupService {
         backup.setCmd(cmd.toString());
         backup.setIp(host);
         backup.setPort(port);
-        backup.setCmd(username);
+        backup.setCmd(cmd.toString());
         backup.setDbName(dbName);
         backup.setFilePath(savePath);
         backup.setFileName(fileName);
@@ -57,7 +59,6 @@ public class BackupServiceImp implements BackupService {
 
     private String getDate(Date date) {
         String dataString = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
-        System.err.println(dataString);
         return dataString;
     }
 }
