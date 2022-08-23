@@ -30,24 +30,26 @@ public class AffairController {
         return new ResultJson(200, "success", productList);
     }
 
-    @GetMapping("/product/{store}")
-    public ResultJson prod(@PathVariable String store) {
+    @PostMapping("/product/store")
+    public ResultJson prod(@RequestParam("store") String store) {
         List<Product> productList = productService.findByStore(store);
         return new ResultJson(200, "success", productList);
     }
 
-    @GetMapping("product/{id}")
+    @PostMapping("/product/{id}")
     public ResultJson getProdById(@PathVariable Integer id) {
         Optional<Product> products = productService.findById(id);
         Product product = null;
         if (products.isPresent()) {
             product = products.get();
+        } else {
+            return new ResultJson(400, "not found");
         }
         return new ResultJson(200, "success", product);
     }
 
-    @GetMapping("/product/{name}")
-    public ResultJson getProd(@PathVariable String name) {
+    @PostMapping("/product/name")
+    public ResultJson getProd(@RequestParam("name") String name) {
         Product product = productService.findByName(name);
         return new ResultJson(200, "success", product);
     }
@@ -69,7 +71,7 @@ public class AffairController {
         return new ResultJson(200, "success", wareList);
     }
 
-    @PostMapping("/ware/{time}")
+    @GetMapping("/ware/{time}")
     public ResultJson getWare(@PathVariable String time) {
         List<Ware> wares = wareService.findAfterTime(time);
         return new ResultJson(200, "success", wares);
@@ -81,7 +83,7 @@ public class AffairController {
         return new ResultJson(200, "ok");
     }
 
-    @GetMapping("/wares")
+    @PostMapping("/wares")
     public ResultJson getWare(@RequestParam("start") String start,
                               @RequestParam("end") String end) {
         List<Ware> wares = wareService.findBetweenTime(start, end);
