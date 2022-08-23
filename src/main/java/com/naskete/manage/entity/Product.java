@@ -3,8 +3,6 @@ package com.naskete.manage.entity;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -15,7 +13,7 @@ public class Product { // 物资表
     private String pname; // 名称
     private String punit; // 货物单位
     private String store; // 存放仓库
-    private Integer type; // 货物类别
+    private String type; // 货物类别
     private Double price; // 入库单价
     @CreatedDate
     private Date intime; // 入库时间
@@ -53,11 +51,11 @@ public class Product { // 物资表
         this.store = store;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
     }
 
