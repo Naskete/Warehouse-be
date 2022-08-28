@@ -6,6 +6,7 @@ import com.naskete.manage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -35,5 +36,10 @@ public class UserServiceImp implements UserService {
     @Override
     public Optional<User> FindById(Integer id) {
         return userDao.findById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userDao.findAll();
     }
 }

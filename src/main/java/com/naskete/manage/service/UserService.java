@@ -3,6 +3,7 @@ package com.naskete.manage.service;
 import com.naskete.manage.entity.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,4 +17,6 @@ public interface UserService {
     void updateUser(User user);
 
     Optional<User> FindById(Integer id);
+
+    List<User> findAll();
 }
