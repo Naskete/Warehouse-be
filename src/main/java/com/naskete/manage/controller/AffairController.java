@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class AffairController {
     @Autowired
     private WareService wareService;
@@ -54,10 +55,6 @@ public class AffairController {
         return new ResultJson(200, "success", product);
     }
 
-//    @PostMapping("/product/update")
-//    public ResultJson updateProd() {
-//        return new ResultJson(200, "ok");
-//    }
 
     @PostMapping("/product/delete")
     public ResultJson deleteProd(@RequestParam("id") Integer pid) {

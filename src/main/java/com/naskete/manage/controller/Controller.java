@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @Slf4j
+@CrossOrigin
 public class Controller {
     @Autowired
     private UserService userService;
@@ -86,14 +87,19 @@ public class Controller {
     }
 
     @PostMapping("/usr/update")
-    public ResultJson updateUser(@RequestBody User user) {
-        String pwd = user.getPassword();
+    public ResultJson updateUser(@RequestParam("id") Integer id,
+                                 @RequestParam("password") String password,
+                                 @RequestParam("username") String username,
+                                 @RequestParam("telephone") String telephone) {
+
         User usr = new User();
-        usr.setUid(user.getUid());
-        usr.setUsername(user.getUsername());
-        usr.setPassword(Sha256.encode(pwd));
-        usr.setTelephone(user.getTelephone());
-        userService.updateUser(usr);
+        usr.setUsername(username);
+        if (password.length() < 30) {
+            usr.setPassword(Sha256.encode(password));
+        }
+        usr.setPassword(password);
+        usr.setTelephone(telephone);
+        userService.updateUser(id, usr.getUsername(), usr.getPassword(), usr.getTelephone());
         return new ResultJson(200, "update successfully");
     }
 
