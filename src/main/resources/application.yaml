@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
   servlet:
     context-path: /api
 spring:
@@ -15,9 +15,9 @@ spring:
           auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         show_sql: true
-  redis:
-    host: 127.0.0.1
-    database: 0
-    port: 6379
+#  redis:
+#    host: 127.0.0.1
+#    database: 0
+#    port: 6379
 sa-token:
   jwt-secret-key: saTokenJwtSecretKeyForThisProject
