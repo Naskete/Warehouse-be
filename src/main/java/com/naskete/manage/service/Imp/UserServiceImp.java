@@ -29,11 +29,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void updateUser(User user) {
-        userDao.save(user);
-    }
-
-    @Override
     public Optional<User> FindById(Integer id) {
         return userDao.findById(id);
     }
@@ -41,5 +36,10 @@ public class UserServiceImp implements UserService {
     @Override
     public List<User> findAll() {
         return userDao.findAll();
+    }
+
+    @Override
+    public void updateUser(Integer uid, String username, String password, String telephone) {
+        userDao.update(uid, username, password, telephone);
     }
 }

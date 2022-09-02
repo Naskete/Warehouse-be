@@ -14,9 +14,9 @@ public interface UserService {
 
     void deleteUser(Integer id);
 
-    void updateUser(User user);
-
     Optional<User> FindById(Integer id);
 
     List<User> findAll();
+
+    void updateUser(Integer uid, String username, String password, String telephone);
 }
